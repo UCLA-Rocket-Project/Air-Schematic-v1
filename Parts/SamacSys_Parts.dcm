@@ -6,10 +6,28 @@ K
 F http://www.ti.com/lit/ds/symlink/ne555.pdf
 $ENDCMP
 #
+$CMP TB006-508-02BE
+D Fixed Terminal Blocks screw type, 5.08 , horizontal, 2 poles, CUI Blue, slotted screw, PCB mount
+K
+F 
+$ENDCMP
+#
+$CMP TB001-500-04BE
+D Fixed Terminal Blocks Terminal block, screw type, 5.00, horizontal, 4 poles, CUI Blue, slotted screw, PCB mount
+K
+F https://componentsearchengine.com/Datasheets/1/TB001-500-04BE.pdf
+$ENDCMP
+#
 $CMP ADXL375BCCZ
 D ADXL375BCCZ Analog Devices, 3-Axis Accelerometer, I2C, Serial-3 Wire, Serial-4 Wire, Serial-SPI, 14-Pin LGA
 K
 F 
+$ENDCMP
+#
+$CMP 47219-2001
+D Molex 47219 Series 8 Way Horizontal Hinged Micro SD Memory Card Connector with Solder Termination
+K
+F http://www.molex.com/molex/products/datasheet.jsp?part=active/0472192001_MEMORY_CARD_SOCKET.xml&channel=Products&Lang=en-US
 $ENDCMP
 #
 #End Doc Library

@@ -85,7 +85,7 @@ SDA
 Text GLabel 7400 2300 2    50   Input ~ 0
 SDA
 Text Notes 7150 6500 0    50   ~ 0
-GENERAL:\n-Add radio (uart for rfd, spi for lora)\n-Add sd (full or micro??)\n-Confirm MCU needs no caps - breakout board.\n-Check solderability of components, interrupt abilities, potentially replace\n- Add pwr/gnd input - screw terminals?
+GENERAL:\n-Add radio (uart for rfd, spi for lora)\n-SD Clock goes where?\n-What is fastest signal speed?\n-Confirm MCU needs no caps - breakout board.\n-Check solderability of components, interrupt abilities, potentially replace
 $Comp
 L power:+3V3 #PWR0104
 U 1 1 5F376D9C
@@ -131,7 +131,7 @@ $EndComp
 Text Notes 3500 7050 0    50   ~ 0
 Altimeter Power:\n-I2C logic is 80-100% VDD\n-VDD Range is 1.8-3.6V\n-Connect CSB to VDD or GND\n-(CSB defines last bit in i2c address)\n-10k pullup resistors on sda and sclk lines (to vdd)
 Text Notes 500  700  0    50   ~ 0
-Note: Dev board, not chip!\n-3v3 power supply, only use one power supply at once (will this be a problem for testing?)\n-Logic level: default 1.8v
+Note: Dev board, not chip!\n-3v3 power supply, only use one power supply at once (will this be a problem for testing?)\n-Logic levels
 Wire Wire Line
 	1750 7200 1600 7200
 Wire Wire Line
@@ -574,7 +574,7 @@ Wire Wire Line
 	1350 5300 1500 5300
 Text GLabel 3700 4800 2    50   Input ~ 0
 GPS_READY
-Text GLabel 1900 3050 2    50   Input ~ 0
+Text GLabel 3000 1900 2    50   Input ~ 0
 GPS_READY
 Wire Wire Line
 	3700 4500 3700 4400
@@ -591,39 +591,6 @@ F 1 "CAM-M8Q-0" H 2600 5676 50  0000 C CNN
 F 2 "CAM-M8Q-0:LCC100P960X1400X210-31N" H 2600 4900 50  0001 L BNN
 F 3 "UBlox" H 2600 4900 50  0001 L BNN
 	1    2600 4900
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Screw_Terminal_01x02 PowerSupply1
-U 1 1 5F448AC7
-P 9900 4050
-F 0 "PowerSupply1" H 9980 4042 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" H 9980 3951 50  0000 L CNN
-F 2 "" H 9900 4050 50  0001 C CNN
-F 3 "~" H 9900 4050 50  0001 C CNN
-	1    9900 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Screw_Terminal_01x02 UART1
-U 1 1 5F44AAAB
-P 9900 4450
-F 0 "UART1" H 9980 4442 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" H 9980 4351 50  0000 L CNN
-F 2 "" H 9900 4450 50  0001 C CNN
-F 3 "~" H 9900 4450 50  0001 C CNN
-	1    9900 4450
-	1    0    0    -1  
-$EndComp
-$Comp
-L Connector:Screw_Terminal_01x04 SPI1
-U 1 1 5F44C81C
-P 9900 4950
-F 0 "SPI1" H 9980 4942 50  0000 L CNN
-F 1 "Screw_Terminal_01x04" H 9980 4851 50  0000 L CNN
-F 2 "" H 9900 4950 50  0001 C CNN
-F 3 "~" H 9900 4950 50  0001 C CNN
-	1    9900 4950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -661,29 +628,168 @@ F 3 "" H 9700 4050 50  0001 C CNN
 	1    9700 4050
 	1    0    0    -1  
 $EndComp
-Text GLabel 9700 4850 0    50   Input ~ 0
-CS
-Text GLabel 9700 4950 0    50   Input ~ 0
-MISO
-Text GLabel 9700 5050 0    50   Input ~ 0
-MOSI
-Text GLabel 9700 5150 0    50   Input ~ 0
-CLK
 Text GLabel 9700 4450 0    50   Input ~ 0
 TX
 Text GLabel 9700 4550 0    50   Input ~ 0
 RX
+$Comp
+L power:+3V3 #PWR01
+U 1 1 5F470C0E
+P 6400 4950
+F 0 "#PWR01" H 6400 4800 50  0001 C CNN
+F 1 "+3V3" H 6415 5123 50  0000 C CNN
+F 2 "" H 6400 4950 50  0001 C CNN
+F 3 "" H 6400 4950 50  0001 C CNN
+	1    6400 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 5F473626
+P 6400 5150
+F 0 "#PWR02" H 6400 4900 50  0001 C CNN
+F 1 "GND" H 6405 4977 50  0000 C CNN
+F 2 "" H 6400 5150 50  0001 C CNN
+F 3 "" H 6400 5150 50  0001 C CNN
+	1    6400 5150
+	1    0    0    -1  
+$EndComp
+Text GLabel 8100 4650 2    50   Input ~ 0
+Dat0
+Text GLabel 8100 4750 2    50   Input ~ 0
+Dat1
+Text GLabel 6800 4650 0    50   Input ~ 0
+Dat2
+Text GLabel 6800 4750 0    50   Input ~ 0
+Dat3
+Wire Wire Line
+	6400 5150 6800 5150
+Wire Wire Line
+	6400 4950 6800 4950
+Text GLabel 6800 5050 0    50   Input ~ 0
+SDIOCLK?
+Text GLabel 6800 4850 0    50   Input ~ 0
+CMD
+Text Notes 6450 5550 0    50   ~ 0
+How to wire this thing... also. Pullup resistors?
+Text GLabel 1400 1600 0    50   Input ~ 0
+Dat2
+Text GLabel 1400 1700 0    50   Input ~ 0
+Dat3
+Text GLabel 1400 1800 0    50   Input ~ 0
+CMD
+Text GLabel 1400 1900 0    50   Input ~ 0
+Dat0
+Text GLabel 1400 2000 0    50   Input ~ 0
+Dat1
+Text GLabel 2700 3550 0    50   Input ~ 0
+SDIOCLK?
+Text GLabel 3000 2000 2    50   Input ~ 0
+IMU_READY
+Text GLabel 9050 2800 0    50   Input ~ 0
+IMU_READY
+Text GLabel 7200 2700 2    50   Input ~ 0
+ACCEL_READY
+Text GLabel 3000 2100 2    50   Input ~ 0
+ACCEL_READY
+Text Notes 850  3050 0    50   ~ 0
+Pinout Reference: https://randomnerdtutorials.com/esp32-pinout-reference-gpios/
+$Comp
+L SamacSys_Parts:47219-2001 SD1
+U 1 1 5F4D7F0F
+P 6800 4650
+F 0 "SD1" H 7450 4915 50  0000 C CNN
+F 1 "47219-2001" H 7450 4824 50  0000 C CNN
+F 2 "SamacSys_Parts:472192001" H 7950 4750 50  0001 L CNN
+F 3 "http://www.molex.com/molex/products/datasheet.jsp?part=active/0472192001_MEMORY_CARD_SOCKET.xml&channel=Products&Lang=en-US" H 7950 4650 50  0001 L CNN
+F 4 "Molex 47219 Series 8 Way Horizontal Hinged Micro SD Memory Card Connector with Solder Termination" H 7950 4550 50  0001 L CNN "Description"
+F 5 "" H 7950 4450 50  0001 L CNN "Height"
+F 6 "538-47219-2001" H 7950 4350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Molex/47219-2001?qs=6kT3pPPHxnVaoXw6Dd7beQ%3D%3D" H 7950 4250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Molex" H 7950 4150 50  0001 L CNN "Manufacturer_Name"
+F 9 "47219-2001" H 7950 4050 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6800 4650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 5F4E851D
+P 8100 5150
+F 0 "#PWR03" H 8100 4900 50  0001 C CNN
+F 1 "GND" H 8105 4977 50  0000 C CNN
+F 2 "" H 8100 5150 50  0001 C CNN
+F 3 "" H 8100 5150 50  0001 C CNN
+	1    8100 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 5050 8100 5150
+Connection ~ 8100 5050
+Connection ~ 8100 4950
+Wire Wire Line
+	8100 4950 8100 5050
+Connection ~ 8100 5150
+Wire Wire Line
+	8100 4850 8100 4950
 Text Notes 9750 5350 0    50   ~ 0
 Check the footprint on these
+Text GLabel 9700 5150 0    50   Input ~ 0
+CLK
+Text GLabel 9700 5050 0    50   Input ~ 0
+MOSI
+Text GLabel 9700 4950 0    50   Input ~ 0
+MISO
+Text GLabel 9700 4850 0    50   Input ~ 0
+CS
 $Comp
-L Connector:Micro_SD_Card_Det J?
-U 1 1 5F46BD62
-P 6800 4900
-F 0 "J?" H 6750 5717 50  0000 C CNN
-F 1 "Micro_SD_Card_Det" H 6750 5626 50  0000 C CNN
-F 2 "" H 8850 5600 50  0001 C CNN
-F 3 "https://www.hirose.com/product/en/download_file/key_name/DM3/category/Catalog/doc_file_id/49662/?file_category_id=4&item_id=195&is_series=1" H 6800 5000 50  0001 C CNN
-	1    6800 4900
+L SamacSys_Parts:TB001-500-04BE SPI1
+U 1 1 5F541036
+P 9700 4850
+F 0 "SPI1" H 10328 4746 50  0000 L CNN
+F 1 "TB001-500-04BE" H 10328 4655 50  0000 L CNN
+F 2 "SamacSys_Parts:TB00150004BE" H 10350 4950 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/TB001-500-04BE.pdf" H 10350 4850 50  0001 L CNN
+F 4 "Fixed Terminal Blocks Terminal block, screw type, 5.00, horizontal, 4 poles, CUI Blue, slotted screw, PCB mount" H 10350 4750 50  0001 L CNN "Description"
+F 5 "12.9" H 10350 4650 50  0001 L CNN "Height"
+F 6 "490-TB001-500-04BE" H 10350 4550 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB001-500-04BE?qs=vLWxofP3U2xFd1xqNcHXZA%3D%3D" H 10350 4450 50  0001 L CNN "Mouser Price/Stock"
+F 8 "CUI Devices" H 10350 4350 50  0001 L CNN "Manufacturer_Name"
+F 9 "TB001-500-04BE" H 10350 4250 50  0001 L CNN "Manufacturer_Part_Number"
+	1    9700 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:TB006-508-02BE UART1
+U 1 1 5F5421F0
+P 9700 4450
+F 0 "UART1" H 10328 4446 50  0000 L CNN
+F 1 "TB006-508-02BE" H 10328 4355 50  0000 L CNN
+F 2 "SamacSys_Parts:TB00650802BE" H 10350 4550 50  0001 L CNN
+F 3 "" H 10350 4450 50  0001 L CNN
+F 4 "Fixed Terminal Blocks screw type, 5.08 , horizontal, 2 poles, CUI Blue, slotted screw, PCB mount" H 10350 4350 50  0001 L CNN "Description"
+F 5 "10.4" H 10350 4250 50  0001 L CNN "Height"
+F 6 "490-TB006-508-02BE" H 10350 4150 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB006-508-02BE?qs=vLWxofP3U2wEdOVV%2FaT04w%3D%3D" H 10350 4050 50  0001 L CNN "Mouser Price/Stock"
+F 8 "CUI Devices" H 10350 3950 50  0001 L CNN "Manufacturer_Name"
+F 9 "TB006-508-02BE" H 10350 3850 50  0001 L CNN "Manufacturer_Part_Number"
+	1    9700 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:TB006-508-02BE PowerSupply1
+U 1 1 5F54DCFB
+P 9700 4050
+F 0 "PowerSupply1" H 10328 4046 50  0000 L CNN
+F 1 "TB006-508-02BE" H 10328 3955 50  0000 L CNN
+F 2 "SamacSys_Parts:TB00650802BE" H 10350 4150 50  0001 L CNN
+F 3 "" H 10350 4050 50  0001 L CNN
+F 4 "Fixed Terminal Blocks screw type, 5.08 , horizontal, 2 poles, CUI Blue, slotted screw, PCB mount" H 10350 3950 50  0001 L CNN "Description"
+F 5 "10.4" H 10350 3850 50  0001 L CNN "Height"
+F 6 "490-TB006-508-02BE" H 10350 3750 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB006-508-02BE?qs=vLWxofP3U2wEdOVV%2FaT04w%3D%3D" H 10350 3650 50  0001 L CNN "Mouser Price/Stock"
+F 8 "CUI Devices" H 10350 3550 50  0001 L CNN "Manufacturer_Name"
+F 9 "TB006-508-02BE" H 10350 3450 50  0001 L CNN "Manufacturer_Part_Number"
+	1    9700 4050
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
