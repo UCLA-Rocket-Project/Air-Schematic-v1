@@ -1,4 +1,4 @@
-18644429410253533
+18647628814513086
 ADXL375BCCZ-pcb-part-libraries
 CC-14-1
 CC-14-1
@@ -6,6 +6,13 @@ Integrated Circuit
 0
 14
 14
+BMX055
+BMX055
+
+
+0
+20
+20
 BMX160
 PQFN50P250X300X100-14N
 
@@ -56111,6 +56118,13 @@ Yellow 5381 Series LED
 0
 2
 2
+MS561101BA03-50
+Inexact_Altimeter_Breakout
+Through hole straight pin header, 1x07, 2.54mm pitch, single row
+Through hole pin header THT 1x07 2.54mm single row
+0
+7
+7
 MS561101BA03-50
 SON125P500X300X100-8N
 
