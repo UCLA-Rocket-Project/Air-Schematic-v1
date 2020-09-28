@@ -545,8 +545,6 @@ Wire Wire Line
 Wire Wire Line
 	4200 5500 3700 5500
 Wire Wire Line
-	9200 2700 9200 3150
-Wire Wire Line
 	4200 5050 4200 5500
 Connection ~ 3700 4300
 Wire Wire Line
@@ -965,4 +963,18 @@ F 3 "" H 9050 1600 50  0001 C CNN
 	1    9050 1600
 	1    0    0    -1  
 $EndComp
+Text GLabel 10450 2100 2    50   Input ~ 0
+ACCEL2_READY
+Text GLabel 10450 2600 2    50   Input ~ 0
+MAGNET_READY
+Text GLabel 10450 3100 2    50   Input ~ 0
+GYRO_READY
+Wire Wire Line
+	4200 4300 4200 4750
+Text GLabel 3000 2200 2    50   Input ~ 0
+ACCEL2_READY
+Text GLabel 3000 2400 2    50   Input ~ 0
+MAGNET_READY
+Text GLabel 3000 2300 2    50   Input ~ 0
+GYRO_READY
 $EndSCHEMATC
