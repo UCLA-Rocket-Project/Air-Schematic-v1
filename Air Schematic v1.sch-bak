@@ -509,17 +509,6 @@ F 9 "TB006-508-02BE" H 10350 3450 50  0001 L CNN "Manufacturer_Part_Number"
 	1    9700 4050
 	1    0    0    -1  
 $EndComp
-$Comp
-L New_Parts:Altimeter MS561101BA03_Breakout1
-U 1 1 5F599B15
-P 2800 6150
-F 0 "MS561101BA03_Breakout1" H 2800 6100 50  0000 C CNN
-F 1 "Altimeter" H 2800 6200 50  0000 C CNN
-F 2 "MS561101BA03-50:Inexact_Altimeter_Breakout" H 2800 6150 50  0001 C CNN
-F 3 "" H 2800 6150 50  0001 C CNN
-	1    2800 6150
-	1    0    0    -1  
-$EndComp
 Text GLabel 3200 6550 2    50   Input ~ 0
 SCLK
 Text GLabel 3200 6650 2    50   Input ~ 0
@@ -694,9 +683,9 @@ Wire Wire Line
 	4200 4300 4200 4750
 Text GLabel 3000 2400 2    50   Input ~ 0
 ACCEL2_READY
-Text GLabel 3000 2300 2    50   Input ~ 0
-MAGNET_READY
 Text GLabel 3000 2200 2    50   Input ~ 0
+MAGNET_READY
+Text GLabel 3000 2300 2    50   Input ~ 0
 GYRO_READY
 $Comp
 L SamacSys_Parts:TB001-500-04BE Breakouts3
@@ -765,4 +754,15 @@ Wire Wire Line
 	1400 2700 1150 2700
 Wire Wire Line
 	1150 2800 1400 2800
+$Comp
+L Air-Schematic-v1-rescue:Altimeter-New_Parts MS561101BA03_Breakout1
+U 1 1 5F599B15
+P 2800 6150
+F 0 "MS561101BA03_Breakout1" H 2473 5696 50  0000 R CNN
+F 1 "Altimeter" H 2473 5605 50  0000 R CNN
+F 2 "MS561101BA03-50:Inexact_Altimeter_Breakout" H 2800 6150 50  0001 C CNN
+F 3 "" H 2800 6150 50  0001 C CNN
+	1    2800 6150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

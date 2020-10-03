@@ -1,3 +1,2 @@
 (sym_lib_table
-  (lib (name SamacSys_Parts_Air)(type Legacy)(uri ${KIPRJMOD}/Parts/SamacSys_Parts_Air.lib)(options "")(descr ""))
 )

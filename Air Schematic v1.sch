@@ -31,17 +31,6 @@ F 9 "ADXL375BCCZ" H 7050 2200 50  0001 L CNN "Manufacturer_Part_Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:GND #PWR0101
-U 1 1 5F364D6C
-P -2550 5200
-F 0 "#PWR0101" H -2550 4950 50  0001 C CNN
-F 1 "GND" H -2545 5027 50  0000 C CNN
-F 2 "" H -2550 5200 50  0001 C CNN
-F 3 "" H -2550 5200 50  0001 C CNN
-	1    -2550 5200
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GND #PWR0102
 U 1 1 5F366429
 P 5000 2400
@@ -54,15 +43,11 @@ F 3 "" H 5000 2400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5200 2400 5100 2400
-Wire Wire Line
-	-2750 5200 -2550 5200
 Text Label 2100 1900 0    50   ~ 0
 MCU
 Text GLabel 6200 850  0    50   Input ~ 0
 SCLK
 Text GLabel 3250 1200 2    50   Input ~ 0
-SCLK
-Text GLabel -4250 5000 0    50   Input ~ 0
 SCLK
 Wire Wire Line
 	3000 1200 3250 1200
@@ -80,8 +65,6 @@ F 4 "Espressif Systems" H 2200 1900 50  0001 L BNN "Field4"
 $EndComp
 Text GLabel 3250 1100 2    50   Input ~ 0
 SDA
-Text GLabel -4750 5200 0    50   Input ~ 0
-SDA
 Text GLabel 7400 2300 2    50   Input ~ 0
 SDA
 Text Notes 7150 6500 0    50   ~ 10
@@ -89,115 +72,22 @@ GENERAL:\n-Add radio (uart for rfd, spi for lora)\n-SD Clock goes where?\n-What 
 $Comp
 L power:+3V3 #PWR0104
 U 1 1 5F376D9C
-P 1050 1000
-F 0 "#PWR0104" H 1050 850 50  0001 C CNN
-F 1 "+3V3" H 1065 1173 50  0000 C CNN
-F 2 "" H 1050 1000 50  0001 C CNN
-F 3 "" H 1050 1000 50  0001 C CNN
-	1    1050 1000
+P 1400 1000
+F 0 "#PWR0104" H 1400 850 50  0001 C CNN
+F 1 "+3V3" H 1415 1173 50  0000 C CNN
+F 2 "" H 1400 1000 50  0001 C CNN
+F 3 "" H 1400 1000 50  0001 C CNN
+	1    1400 1000
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1050 1000 1400 1000
 Wire Wire Line
 	3000 1100 3250 1100
 Wire Wire Line
 	7200 2300 7300 2300
 Text Notes 6750 1350 0    50   ~ 0
 Accelerometer:\n-Vs: 2-3.6V\n-VDDO: 1.7 - Vs\n-Add interrupt wiring\n-Connect CS pin to VDDIO\n-Alt Address to vddio or gnd
-$Comp
-L power:GND #PWR0105
-U 1 1 5F395226
-P -3950 4800
-F 0 "#PWR0105" H -3950 4550 50  0001 C CNN
-F 1 "GND" H -3945 4627 50  0000 C CNN
-F 2 "" H -3950 4800 50  0001 C CNN
-F 3 "" H -3950 4800 50  0001 C CNN
-	1    -3950 4800
-	1    0    0    1   
-$EndComp
-$Comp
-L MS561101BA03-50:MS561101BA03-50 Altimeter1
-U 1 1 5F33E5F7
-P -3350 5000
-F 0 "Altimeter1" H -3350 5467 50  0000 C CNN
-F 1 "MS561101BA03-50" H -3350 5376 50  0000 C CNN
-F 2 "MS561101BA03-50:SON125P500X300X100-8N" H -3350 5000 50  0001 L BNN
-F 3 "MS561101BA03-50" H -3350 5000 50  0001 L BNN
-F 4 "Compliant" H -3350 5000 50  0001 L BNN "Field4"
-	1    -3350 5000
-	1    0    0    -1  
-$EndComp
-Text Notes -2200 4750 0    50   ~ 0
-Altimeter Power:\n-I2C logic is 80-100% VDD\n-VDD Range is 1.8-3.6V\n-Connect CSB to VDD or GND\n-(CSB defines last bit in i2c address)\n-10k pullup resistors on sda and sclk lines (to vdd)
 Text Notes 500  700  0    50   ~ 0
 Note: Dev board, not chip!\n-3v3 power supply, only use one power supply at once (will this be a problem for testing?)\n-Logic levels: default 3.3v operation
-Wire Wire Line
-	-3950 4900 -4100 4900
-Wire Wire Line
-	-4100 4900 -4100 4400
-Wire Wire Line
-	-2750 4400 -2750 4800
-$Comp
-L Device:C 0.1uF1
-U 1 1 5F3A3883
-P -2550 5050
-F 0 "0.1uF1" H -2435 5096 50  0000 L CNN
-F 1 "C" H -2435 5005 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H -2512 4900 50  0001 C CNN
-F 3 "~" H -2550 5050 50  0001 C CNN
-	1    -2550 5050
-	1    0    0    -1  
-$EndComp
-Connection ~ -2550 5200
-Wire Wire Line
-	-2750 4800 -2550 4800
-Wire Wire Line
-	-2550 4800 -2550 4900
-Connection ~ -2750 4800
-$Comp
-L Device:R_Small_US 10k2
-U 1 1 5F3A9E2E
-P -4200 4900
-F 0 "10k2" H -4132 4946 50  0000 L CNN
-F 1 "R" H -4132 4855 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H -4200 4900 50  0001 C CNN
-F 3 "~" H -4200 4900 50  0001 C CNN
-	1    -4200 4900
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	-4200 4800 -4200 4400
-Connection ~ -4100 4400
-Wire Wire Line
-	-4200 4400 -4100 4400
-$Comp
-L Device:R_Small_US 10k1
-U 1 1 5F3AF5B2
-P -4700 5100
-F 0 "10k1" H -4632 5146 50  0000 L CNN
-F 1 "R" H -4632 5055 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H -4700 5100 50  0001 C CNN
-F 3 "~" H -4700 5100 50  0001 C CNN
-	1    -4700 5100
-	1    0    0    -1  
-$EndComp
-Connection ~ -4200 5000
-Wire Wire Line
-	-4200 5000 -4250 5000
-Wire Wire Line
-	-4100 4400 -2750 4400
-Wire Wire Line
-	-4750 5200 -4700 5200
-Wire Wire Line
-	-4700 5200 -3950 5200
-Wire Wire Line
-	-4700 5000 -4700 4400
-Wire Wire Line
-	-4700 4400 -4200 4400
-Connection ~ -4200 4400
-Wire Wire Line
-	-4200 5000 -3950 5000
 Wire Wire Line
 	5200 2600 5100 2600
 Wire Wire Line
@@ -270,18 +160,6 @@ Wire Wire Line
 Wire Wire Line
 	4700 2300 5200 2300
 $Comp
-L power:+3V3 #PWR0107
-U 1 1 5F396255
-P -2550 4800
-F 0 "#PWR0107" H -2550 4650 50  0001 C CNN
-F 1 "+3V3" H -2535 4973 50  0000 C CNN
-F 2 "" H -2550 4800 50  0001 C CNN
-F 3 "" H -2550 4800 50  0001 C CNN
-	1    -2550 4800
-	1    0    0    -1  
-$EndComp
-Connection ~ -2550 4800
-$Comp
 L power:+3V3 #PWR0108
 U 1 1 5F399C6C
 P 4700 2300
@@ -349,163 +227,8 @@ Wire Notes Line
 	3750 1250 3200 1250
 Wire Notes Line
 	3200 1500 3200 1250
-Connection ~ -4700 5200
 Wire Wire Line
 	7300 1600 5200 1600
-Connection ~ 14050 3050
-Wire Wire Line
-	14050 2050 14200 2050
-Wire Wire Line
-	14050 2600 14050 3050
-Connection ~ 14050 2050
-Wire Wire Line
-	14050 2300 14050 2050
-$Comp
-L Device:C 0.1uF2
-U 1 1 5F3E0F9D
-P 14050 2450
-F 0 "0.1uF2" H 14165 2496 50  0000 L CNN
-F 1 "C" H 14165 2405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 14088 2300 50  0001 C CNN
-F 3 "~" H 14050 2450 50  0001 C CNN
-	1    14050 2450
-	1    0    0    -1  
-$EndComp
-Connection ~ 14050 3150
-Wire Wire Line
-	14500 3150 14050 3150
-Wire Wire Line
-	14500 2600 14500 3150
-Connection ~ 13900 1550
-Wire Wire Line
-	14500 1550 14500 2300
-Wire Wire Line
-	13900 1550 14500 1550
-Wire Wire Line
-	12600 1550 12850 1550
-Connection ~ 12600 1550
-Wire Wire Line
-	12100 1550 12600 1550
-Wire Wire Line
-	12100 2250 12100 1550
-Wire Wire Line
-	12850 1550 13900 1550
-Connection ~ 12850 1550
-Wire Wire Line
-	12600 2150 12600 1550
-Wire Wire Line
-	12100 2450 12850 2450
-Connection ~ 12100 2450
-Wire Wire Line
-	12050 2450 12100 2450
-Wire Wire Line
-	12600 2350 12550 2350
-Connection ~ 12600 2350
-Wire Wire Line
-	12850 2350 12600 2350
-$Comp
-L Device:R_Small_US 10k5
-U 1 1 5F3BFA76
-P 12100 2350
-F 0 "10k5" H 12168 2396 50  0000 L CNN
-F 1 "R" H 12168 2305 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 12100 2350 50  0001 C CNN
-F 3 "~" H 12100 2350 50  0001 C CNN
-	1    12100 2350
-	1    0    0    -1  
-$EndComp
-Text GLabel 12050 2450 0    50   Input ~ 0
-SDA
-Text GLabel 12550 2350 0    50   Input ~ 0
-SCLK
-Wire Wire Line
-	13900 1950 14050 1950
-Connection ~ 14050 1950
-Wire Wire Line
-	13900 1550 13900 1950
-Wire Wire Line
-	12850 2250 12850 1550
-$Comp
-L Device:R_Small_US 10k6
-U 1 1 5F3A99BA
-P 12600 2250
-F 0 "10k6" H 12668 2296 50  0000 L CNN
-F 1 "R" H 12668 2205 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric" H 12600 2250 50  0001 C CNN
-F 3 "~" H 12600 2250 50  0001 C CNN
-	1    12600 2250
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C 0.1uF3
-U 1 1 5F3A8529
-P 14500 2450
-F 0 "0.1uF3" H 14615 2496 50  0000 L CNN
-F 1 "C" H 14615 2405 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric" H 14538 2300 50  0001 C CNN
-F 3 "~" H 14500 2450 50  0001 C CNN
-	1    14500 2450
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR0110
-U 1 1 5F3A4A8B
-P 14200 2050
-F 0 "#PWR0110" H 14200 1900 50  0001 C CNN
-F 1 "+3V3" H 14215 2223 50  0000 C CNN
-F 2 "" H 14200 2050 50  0001 C CNN
-F 3 "" H 14200 2050 50  0001 C CNN
-	1    14200 2050
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:+3V3 #PWR0111
-U 1 1 5F3A35B3
-P 14050 1950
-F 0 "#PWR0111" H 14050 1800 50  0001 C CNN
-F 1 "+3V3" H 14065 2123 50  0000 C CNN
-F 2 "" H 14050 1950 50  0001 C CNN
-F 3 "" H 14050 1950 50  0001 C CNN
-	1    14050 1950
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	14050 3050 14300 3050
-$Comp
-L power:GND #PWR0112
-U 1 1 5F39F8F9
-P 14050 3150
-F 0 "#PWR0112" H 14050 2900 50  0001 C CNN
-F 1 "GND" H 14055 2977 50  0000 C CNN
-F 2 "" H 14050 3150 50  0001 C CNN
-F 3 "" H 14050 3150 50  0001 C CNN
-	1    14050 3150
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:GND #PWR0113
-U 1 1 5F39E2A5
-P 14300 3050
-F 0 "#PWR0113" H 14300 2800 50  0001 C CNN
-F 1 "GND" H 14305 2877 50  0000 C CNN
-F 2 "" H 14300 3050 50  0001 C CNN
-F 3 "" H 14300 3050 50  0001 C CNN
-	1    14300 3050
-	1    0    0    -1  
-$EndComp
-$Comp
-L BMX160:BMX160 IMU1
-U 1 1 5F39490B
-P 13450 2550
-F 0 "IMU1" H 13450 3417 50  0000 C CNN
-F 1 "BMX160" H 13450 3326 50  0000 C CNN
-F 2 "BMX160:PQFN50P250X300X100-14N" H 13450 2550 50  0001 L BNN
-F 3 "Bosch" H 13450 2550 50  0001 L BNN
-F 4 "1.2" H 13450 2550 50  0001 L BNN "Field4"
-F 5 "IPC-7351B" H 13450 2550 50  0001 L BNN "Field5"
-	1    13450 2550
-	1    0    0    -1  
-$EndComp
 Connection ~ 4700 2300
 $Comp
 L power:+3V3 #PWR0114
@@ -682,8 +405,6 @@ Text GLabel 1400 2000 0    50   Input ~ 0
 Dat1
 Text GLabel 3000 2000 2    50   Input ~ 0
 IMU_READY
-Text GLabel 12850 2750 0    50   Input ~ 0
-IMU_READY
 Text GLabel 7200 2700 2    50   Input ~ 0
 ACCEL_READY
 Text GLabel 3000 2100 2    50   Input ~ 0
@@ -786,17 +507,6 @@ F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB006-508-02BE?qs=vLWxof
 F 8 "CUI Devices" H 10350 3550 50  0001 L CNN "Manufacturer_Name"
 F 9 "TB006-508-02BE" H 10350 3450 50  0001 L CNN "Manufacturer_Part_Number"
 	1    9700 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L New_Parts:Altimeter MS561101BA03_Breakout1
-U 1 1 5F599B15
-P 2800 6150
-F 0 "MS561101BA03_Breakout1" H 2800 6100 50  0000 C CNN
-F 1 "Altimeter" H 2800 6200 50  0000 C CNN
-F 2 "MS561101BA03-50:Inexact_Altimeter_Breakout" H 2800 6150 50  0001 C CNN
-F 3 "" H 2800 6150 50  0001 C CNN
-	1    2800 6150
 	1    0    0    -1  
 $EndComp
 Text GLabel 3200 6550 2    50   Input ~ 0
@@ -971,10 +681,88 @@ Text GLabel 10450 3100 2    50   Input ~ 0
 GYRO_READY
 Wire Wire Line
 	4200 4300 4200 4750
-Text GLabel 3000 2200 2    50   Input ~ 0
-ACCEL2_READY
 Text GLabel 3000 2400 2    50   Input ~ 0
+ACCEL2_READY
+Text GLabel 3000 2200 2    50   Input ~ 0
 MAGNET_READY
 Text GLabel 3000 2300 2    50   Input ~ 0
 GYRO_READY
+$Comp
+L SamacSys_Parts:TB001-500-04BE Breakouts3
+U 1 1 5F710B1B
+P 3650 1500
+F 0 "Breakouts3" H 4278 1396 50  0000 L CNN
+F 1 "TB001-500-04BE" H 4278 1305 50  0000 L CNN
+F 2 "SamacSys_Parts:TB00150004BE" H 4300 1600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/TB001-500-04BE.pdf" H 4300 1500 50  0001 L CNN
+F 4 "Fixed Terminal Blocks Terminal block, screw type, 5.00, horizontal, 4 poles, CUI Blue, slotted screw, PCB mount" H 4300 1400 50  0001 L CNN "Description"
+F 5 "12.9" H 4300 1300 50  0001 L CNN "Height"
+F 6 "490-TB001-500-04BE" H 4300 1200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB001-500-04BE?qs=vLWxofP3U2xFd1xqNcHXZA%3D%3D" H 4300 1100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "CUI Devices" H 4300 1000 50  0001 L CNN "Manufacturer_Name"
+F 9 "TB001-500-04BE" H 4300 900 50  0001 L CNN "Manufacturer_Part_Number"
+	1    3650 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3000 1500 3650 1500
+Wire Wire Line
+	3650 1700 3000 1700
+Wire Wire Line
+	3000 1600 3650 1600
+Wire Wire Line
+	3000 1800 3650 1800
+$Comp
+L SamacSys_Parts:TB001-500-04BE Breakouts2
+U 1 1 5F718A9D
+P 1400 1100
+F 0 "Breakouts2" H 2028 996 50  0000 L CNN
+F 1 "TB001-500-04BE" H 2028 905 50  0000 L CNN
+F 2 "SamacSys_Parts:TB00150004BE" H 2050 1200 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/TB001-500-04BE.pdf" H 2050 1100 50  0001 L CNN
+F 4 "Fixed Terminal Blocks Terminal block, screw type, 5.00, horizontal, 4 poles, CUI Blue, slotted screw, PCB mount" H 2050 1000 50  0001 L CNN "Description"
+F 5 "12.9" H 2050 900 50  0001 L CNN "Height"
+F 6 "490-TB001-500-04BE" H 2050 800 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB001-500-04BE?qs=vLWxofP3U2xFd1xqNcHXZA%3D%3D" H 2050 700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "CUI Devices" H 2050 600 50  0001 L CNN "Manufacturer_Name"
+F 9 "TB001-500-04BE" H 2050 500 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1400 1100
+	-1   0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:TB001-500-04BE Breakouts1
+U 1 1 5F722175
+P 1150 2500
+F 0 "Breakouts1" H 1778 2396 50  0000 L CNN
+F 1 "TB001-500-04BE" H 1778 2305 50  0000 L CNN
+F 2 "SamacSys_Parts:TB00150004BE" H 1800 2600 50  0001 L CNN
+F 3 "https://componentsearchengine.com/Datasheets/1/TB001-500-04BE.pdf" H 1800 2500 50  0001 L CNN
+F 4 "Fixed Terminal Blocks Terminal block, screw type, 5.00, horizontal, 4 poles, CUI Blue, slotted screw, PCB mount" H 1800 2400 50  0001 L CNN "Description"
+F 5 "12.9" H 1800 2300 50  0001 L CNN "Height"
+F 6 "490-TB001-500-04BE" H 1800 2200 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CUI-Devices/TB001-500-04BE?qs=vLWxofP3U2xFd1xqNcHXZA%3D%3D" H 1800 2100 50  0001 L CNN "Mouser Price/Stock"
+F 8 "CUI Devices" H 1800 2000 50  0001 L CNN "Manufacturer_Name"
+F 9 "TB001-500-04BE" H 1800 1900 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1150 2500
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 2500 1150 2500
+Wire Wire Line
+	1150 2600 1400 2600
+Wire Wire Line
+	1400 2700 1150 2700
+Wire Wire Line
+	1150 2800 1400 2800
+$Comp
+L New_Parts:Altimeter MS561101BA03_Breakout1
+U 1 1 5F599B15
+P 2800 6150
+F 0 "MS561101BA03_Breakout1" H 2473 5696 50  0000 R CNN
+F 1 "Altimeter" H 2473 5605 50  0000 R CNN
+F 2 "MS561101BA03-50:Inexact_Altimeter_Breakout" H 2800 6150 50  0001 C CNN
+F 3 "" H 2800 6150 50  0001 C CNN
+	1    2800 6150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
